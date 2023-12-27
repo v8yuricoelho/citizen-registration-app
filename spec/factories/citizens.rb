@@ -8,6 +8,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email(domain: 'gmail.com') }
     phone { Faker::PhoneNumber.unique.cell_phone }
     birthdate { Faker::Date.between(from: 110.years.ago, to: 2.years.ago) }
-    status { 1 }
+    status { rand(0..1) }
   end
 end
