@@ -8,7 +8,7 @@ RSpec.describe CitizensController do
     {
       full_name: Faker::Name.name_with_middle,
       cpf: Faker::IDNumber.unique.brazilian_citizen_number,
-      cns: Faker::Number.unique.number(digits: 15),
+      cns: '201909244910007',
       email: Faker::Internet.unique.email(domain: 'gmail.com'),
       phone: Faker::PhoneNumber.unique.cell_phone,
       birthdate: Faker::Date.between(from: 110.years.ago, to: 2.years.ago),
@@ -31,18 +31,13 @@ RSpec.describe CitizensController do
       end
     end
 
-    # context 'when CPF is invalid' do
-    #   it 'render an error json' do
-    #     post :create, params: citizen_params
-    #     expect(response).to have_http_status '400'
-    #   end
-    # end
-
-    # context 'when CNS is invalid' do
-    # end
-
-    # context 'when email is invalid' do
-    # end
+    context 'when params are invalid' do
+      it 'render an error json' do
+        citizen_params[:cpf] = '12345678911'
+        post :create, params: citizen_params
+        expect(response).to have_http_status :bad_request
+      end
+    end
   end
 
   describe 'PATCH update' do
@@ -53,17 +48,12 @@ RSpec.describe CitizensController do
       end
     end
 
-    # context 'when CPF is invalid' do
-    #   it 'render an error json' do
-    #     post :create, params: citizen_params
-    #     expect(response).to have_http_status '400'
-    #   end
-    # end
-
-    # context 'when CNS is invalid' do
-    # end
-
-    # context 'when email is invalid' do
-    # end
+    context 'when params are invalid' do
+      it 'render an error json' do
+        citizen_params[:cns] = '123456789123456'
+        post :create, params: citizen_params
+        expect(response).to have_http_status :bad_request
+      end
+    end
   end
 end
