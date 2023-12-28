@@ -7,8 +7,6 @@ RSpec.describe Citizen do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:full_name) }
-    it { is_expected.to validate_presence_of(:cpf) }
-    it { is_expected.to validate_presence_of(:cns) }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:phone) }
     it { is_expected.to validate_presence_of(:birthdate) }
@@ -43,6 +41,26 @@ RSpec.describe Citizen do
             expect(citizen.valid?).to be(false)
             expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
           end
+        end
+      end
+    end
+
+    describe 'when cns is invalid' do
+      let(:citizen) { subject }
+
+      context 'when cns size is less than 15' do
+        it 'return an error' do
+          citizen.cns = '185811852300'
+          expect(citizen.valid?).to be(false)
+          expect(citizen.errors.full_messages).to eq(['Cns is not valid'])
+        end
+      end
+
+      context 'when cns does not match' do
+        it 'return an error' do
+          citizen.cns = '123456789112345'
+          expect(citizen.valid?).to be(false)
+          expect(citizen.errors.full_messages).to eq(['Cns is not valid'])
         end
       end
     end
