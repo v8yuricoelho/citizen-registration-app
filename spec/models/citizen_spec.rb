@@ -17,6 +17,16 @@ RSpec.describe Citizen do
     it { is_expected.to validate_uniqueness_of(:email) }
     it { is_expected.to validate_uniqueness_of(:phone).case_insensitive }
 
+    context 'when email format is invalid' do
+      let(:citizen) { subject }
+
+      it 'return an error' do
+        citizen.email = 'john_doe#.com'
+        citizen.valid?
+        expect(citizen.errors.full_messages).to eq(['Email is invalid'])
+      end
+    end
+
     describe 'when cpf is invalid' do
       let(:citizen) { subject }
 
