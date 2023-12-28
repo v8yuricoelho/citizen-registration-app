@@ -19,7 +19,32 @@ RSpec.describe Citizen do
     it { is_expected.to validate_uniqueness_of(:email) }
     it { is_expected.to validate_uniqueness_of(:phone).case_insensitive }
 
-    it { is_expected.to validate_length_of(:cpf) }
-    it { is_expected.to validate_length_of(:cns) }
+    describe 'when cpf is invalid' do
+      let(:citizen) { subject }
+
+      context 'when cpf size is less than 11' do
+        it 'return an error' do
+          citizen.cpf = '075442'
+          expect(citizen.valid?).to be(false)
+          expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
+        end
+
+        context 'when cpf is included in the deny list' do
+          it 'return an error' do
+            citizen.cpf = '00000000000'
+            expect(citizen.valid?).to be(false)
+            expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
+          end
+        end
+
+        context 'when cpf does not match' do
+          it 'return an error' do
+            citizen.cpf = '12345678911'
+            expect(citizen.valid?).to be(false)
+            expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
+          end
+        end
+      end
+    end
   end
 end
