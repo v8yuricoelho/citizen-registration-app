@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe CitizensController do
-  let(:citizen) { create(:citizen) }
+  let(:address) { create(:address) }
+  let(:citizen) { create(:citizen, address_id: address.id) }
   let(:citizen_params) do
     {
       full_name: Faker::Name.name_with_middle,
@@ -12,7 +13,8 @@ RSpec.describe CitizensController do
       email: Faker::Internet.unique.email(domain: 'gmail.com'),
       phone: Faker::PhoneNumber.unique.cell_phone,
       birthdate: Faker::Date.between(from: 110.years.ago, to: 2.years.ago),
-      status: :active
+      status: :active,
+      address_id: address.id
     }
   end
 

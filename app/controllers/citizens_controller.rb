@@ -33,6 +33,6 @@ class CitizensController < ApplicationController
   private
 
   def citizen_params
-    params.permit(:full_name, :cpf, :cns, :email, :phone, :birthdate, :status)
+    params.permit(:full_name, :cpf, :cns, :email, :phone, :birthdate, :status, :address_id)
   end
 end

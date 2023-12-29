@@ -6,6 +6,10 @@ RSpec.describe Address do
   describe 'validations' do
     subject { create(:address) }
 
+    describe 'associations' do
+      it { is_expected.to have_many(:citizens).class_name('Citizen') }
+    end
+
     describe 'validations' do
       it { is_expected.to validate_presence_of(:zip_code) }
       it { is_expected.to validate_presence_of(:street) }

@@ -9,4 +9,6 @@ class Citizen < ActiveRecord::Base
   validates :cns, cns: true
   validates :birthdate, birthdate: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  belongs_to :address
 end

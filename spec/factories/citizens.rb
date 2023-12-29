@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :citizen do
+    address
+
     full_name { Faker::Name.name_with_middle }
     cpf { Faker::IDNumber.unique.brazilian_citizen_number }
     cns { '185811852300009' }
