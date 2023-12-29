@@ -76,6 +76,7 @@ Layout/LineLength:
   Exclude: 
     - Gemfile
     - db/seeds.rb
+    - spec/mailers/citizen_mailer_spec.rb
 
 Lint/InterpolationCheck:
   Exclude:
@@ -213,3 +214,6 @@ Gemspec/DependencyVersion:
 
 Style/RequireOrder:
   Enabled: true
+
+Metrics/AbcSize:
+  Enabled: false
