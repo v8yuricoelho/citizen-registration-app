@@ -7,5 +7,6 @@ class Citizen < ActiveRecord::Base
   validates_uniqueness_of :cpf, :cns, :email, :phone
   validates :cpf, cpf: true
   validates :cns, cns: true
+  validates :birthdate, birthdate: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
