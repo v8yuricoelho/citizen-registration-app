@@ -33,14 +33,14 @@ RSpec.describe Citizen do
       context 'when cpf size is less than 11' do
         it 'return an error' do
           citizen.cpf = '075442'
-          citizen.valid?
+          expect(citizen.valid?).to be_falsey
           expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
         end
 
         context 'when cpf is included in the deny list' do
           it 'return an error' do
             citizen.cpf = '00000000000'
-            citizen.valid?
+            expect(citizen.valid?).to be_falsey
             expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
           end
         end
@@ -48,7 +48,7 @@ RSpec.describe Citizen do
         context 'when cpf does not match' do
           it 'return an error' do
             citizen.cpf = '12345678911'
-            citizen.valid?
+            expect(citizen.valid?).to be_falsey
             expect(citizen.errors.full_messages).to eq(['Cpf is not valid'])
           end
         end
@@ -61,7 +61,7 @@ RSpec.describe Citizen do
       context 'when cns size is less than 15' do
         it 'return an error' do
           citizen.cns = '185811852300'
-          citizen.valid?
+          expect(citizen.valid?).to be_falsey
           expect(citizen.errors.full_messages).to eq(['Cns is not valid'])
         end
       end
@@ -69,7 +69,7 @@ RSpec.describe Citizen do
       context 'when cns does not match' do
         it 'return an error' do
           citizen.cns = '123456789112345'
-          citizen.valid?
+          expect(citizen.valid?).to be_falsey
           expect(citizen.errors.full_messages).to eq(['Cns is not valid'])
         end
       end

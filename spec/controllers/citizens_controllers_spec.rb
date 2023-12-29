@@ -25,6 +25,9 @@ RSpec.describe CitizensController do
 
   describe 'POST create' do
     context 'when params are valid' do
+      it 'sends a registration notification email' do
+      end
+
       it 'render a success json' do
         post :create, params: citizen_params
         expect(response).to have_http_status :ok
@@ -42,6 +45,9 @@ RSpec.describe CitizensController do
 
   describe 'PATCH update' do
     context 'when params are valid' do
+      it 'sends a registration notification email' do
+      end
+
       it 'render a success json' do
         patch :update, params: citizen_params.merge(id: citizen.id)
         expect(response).to have_http_status :ok
@@ -51,7 +57,7 @@ RSpec.describe CitizensController do
     context 'when params are invalid' do
       it 'render an error json' do
         citizen_params[:cns] = '123456789123456'
-        post :create, params: citizen_params
+        patch :update, params: citizen_params.merge(id: citizen.id)
         expect(response).to have_http_status :bad_request
       end
     end

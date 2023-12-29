@@ -97,6 +97,7 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
     - '**/*.gemspec'
+    - config/environments/*
 
 Metrics/ClassLength:
   Exclude:
@@ -148,6 +149,8 @@ RSpec:
 
 RSpec/PredicateMatcher:
   EnforcedStyle: explicit
+  Exclude:
+   - spec/controllers/*
 
 RSpec/FilePath:
   Enabled: false

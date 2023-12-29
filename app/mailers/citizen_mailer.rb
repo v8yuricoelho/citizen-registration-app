@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CitizenMailer < ApplicationMailer
-  default from: "no-reply@aws.com"
+  default from: 'no-reply@aws.com'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
