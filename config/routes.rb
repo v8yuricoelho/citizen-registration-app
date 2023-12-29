@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :citizens, except: :destroy
+  match 'send_mail', to: 'citizen#create', via: 'post'
+  match 'send_mail', to: 'citizen#update', via: 'patch'
 end
