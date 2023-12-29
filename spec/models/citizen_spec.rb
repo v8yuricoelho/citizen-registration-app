@@ -22,8 +22,18 @@ RSpec.describe Citizen do
 
       it 'return an error' do
         citizen.email = 'john_doe#.com'
-        citizen.valid?
+        expect(citizen.valid?).to be_falsey
         expect(citizen.errors.full_messages).to eq(['Email is invalid'])
+      end
+    end
+
+    context 'when birthdate is invalid' do
+      let(:citizen) { subject }
+
+      it 'return an error' do
+        citizen.birthdate = '1900-05-11'
+        expect(citizen.valid?).to be_falsey
+        expect(citizen.errors.full_messages).to eq(['Birthdate is not valid'])
       end
     end
 
