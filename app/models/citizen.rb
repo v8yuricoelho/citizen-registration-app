@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Citizen < ActiveRecord::Base
+  has_one_attached :picture
+
   enum status: %i[inactive active]
 
   validates_presence_of :full_name, :email, :phone, :birthdate, :status
