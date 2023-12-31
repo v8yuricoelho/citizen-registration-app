@@ -11,6 +11,8 @@ class CreateAddresses < ActiveRecord::Migration[7.0]
       t.string :ibge_code
       t.integer :uf, null: false
 
+      t.belongs_to :citizen
+
       t.timestamps
     end
   end

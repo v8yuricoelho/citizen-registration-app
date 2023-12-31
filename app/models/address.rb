@@ -5,5 +5,5 @@ class Address < ActiveRecord::Base
 
   validates_presence_of :zip_code, :street, :neighborhood, :city, :uf
 
-  has_many :citizens
+  belongs_to :citizen
 end

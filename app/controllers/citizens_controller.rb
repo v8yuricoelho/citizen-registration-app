@@ -32,13 +32,17 @@ class CitizensController < ApplicationController
     end
   end
 
+  def new
+    @citizen = Citizen.new
+  end
+
   def show; end
 
   private
 
   def citizen_params
-    params.permit(:full_name, :cpf, :cns, :email, :phone, :birthdate, :status, :address_id,
-                  :picture)
+    params.permit(:full_name, :cpf, :cns, :email, :phone, :birthdate, :status, :picture,
+                  address_attributes: %i[zip_code street unit neighborhood city ibge_code uf])
   end
 
   def set_citizen
