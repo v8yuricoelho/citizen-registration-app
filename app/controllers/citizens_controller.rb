@@ -34,6 +34,7 @@ class CitizensController < ApplicationController
 
   def new
     @citizen = Citizen.new
+    @citizen.build_address
   end
 
   def show; end

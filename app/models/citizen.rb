@@ -2,8 +2,6 @@
 
 class Citizen < ActiveRecord::Base
   has_one_attached :picture
-  
-  accepts_nested_attributes_for :address
 
   enum status: %i[inactive active]
 
@@ -15,4 +13,6 @@ class Citizen < ActiveRecord::Base
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_one :address
+
+  accepts_nested_attributes_for :address
 end
