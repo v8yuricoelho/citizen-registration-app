@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root 'citizens#index'
 
   resources :citizens, except: :destroy
   match 'send_mail', to: 'citizen#create', via: 'post'

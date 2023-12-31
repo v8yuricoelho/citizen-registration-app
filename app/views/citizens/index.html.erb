@@ -1,0 +1,22 @@
+<div class="container shadow rounded mt-4 pb-2">
+  <table class="table table-hover">
+    <thead>
+      <tr class="font-weight-bold">
+        <td>Nome</td>
+        <td>CPF</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @citizens.each do |citizen| %>
+        <tr>
+          <td><%= link_to citizen.full_name, citizen %></td>
+          <td><%= citizen.cpf %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="text-center mt-3">
+  <%= link_to ('Registrar'), citizens_path, class: 'btn btn-success shadow-sm text-center',  title: 'Registrar novo munícipe' %>
+</div>

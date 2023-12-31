@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class CitizensController < ApplicationController
+  before_action :set_citizen, only: %i[show]
+
   def index
     @citizens = Citizen.all
 
-    render json: @citizens, status: 200
+    # render json: @citizens, status: 200
   end
 
   def create
@@ -30,10 +32,16 @@ class CitizensController < ApplicationController
     end
   end
 
+  def show; end
+
   private
 
   def citizen_params
     params.permit(:full_name, :cpf, :cns, :email, :phone, :birthdate, :status, :address_id,
                   :picture)
+  end
+
+  def set_citizen
+    @citizen = Citizen.find(params[:id])
   end
 end
