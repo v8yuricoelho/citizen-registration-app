@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :address do
+    citizen
+
     zip_code { Faker::Address.zip_code }
     street { Faker::Address.street_address }
     unit { Faker::Address.secondary_address }
