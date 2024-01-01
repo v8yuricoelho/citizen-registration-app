@@ -4,7 +4,10 @@
 
   <div class="row justify-content-center">
     <div class="col-4">
-      <div class="text-center">CPF</strong></div>
+      <% if @citizen.picture.attached? %>
+        <div class="text-center"><%= image_tag url_for(@citizen.picture), size: '150x150', class: 'rounded' %></div>
+      <% end %>
+      <div class="text-center"><strong>CPF</strong></div>
       <div class="text-center"><%= @citizen.cpf %></div>
       <div class="text-center"><strong>CNS</strong></div>
       <div class="text-center"><%= @citizen.cns %></div>
