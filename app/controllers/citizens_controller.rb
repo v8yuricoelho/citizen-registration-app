@@ -4,20 +4,20 @@ class CitizensController < ApplicationController
   before_action :set_citizen, only: %i[show]
 
   def index
-    @citizens = Citizen.all
-
-    # render json: @citizens, status: 200
+    @citizens = Citizen.all.page params[:page]
   end
 
   def create
     @citizen = Citizen.new(citizen_params)
 
-    if @citizen.save
-      CitizenMailer.registration_notification(citizen_params[:full_name],
-                                              citizen_params[:email]).deliver_later
-      render json: @citizen, status: 200
-    else
-      render json: { errors: @citizen.errors.full_messages }, status: 400
+    respond_to do |format|
+      if @citizen.save
+        CitizenMailer.registration_notification(citizen_params[:full_name],
+                                                citizen_params[:email]).deliver_later
+        format.html { redirect_to @citizen, status: :ok }
+      else
+        render json: { errors: @citizen.errors.full_messages }, status: 400
+      end
     end
   end
 
@@ -38,6 +38,8 @@ class CitizensController < ApplicationController
   end
 
   def show; end
+
+  def edit; end
 
   private
 

@@ -16,6 +16,15 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="row justify-content-around">
+        <div class="col">
+            <%= page_entries_info @citizens, entry_name: 'munícipes' %>
+        </div>
+        <div class="col align-self-end">
+            <%= paginate @citizens %>
+        </div>
+    </div>
 </div>
 <div class="text-center mt-3">
   <%= link_to ('Registrar'), new_citizen_path, class: 'btn btn-success shadow-sm text-center',  title: 'Registrar novo munícipe' %>
