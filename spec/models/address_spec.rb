@@ -7,7 +7,7 @@ RSpec.describe Address do
     subject { create(:address) }
 
     describe 'associations' do
-      it { is_expected.to have_many(:citizens).class_name('Citizen') }
+      it { is_expected.to belong_to(:citizen).class_name('Citizen') }
     end
 
     describe 'validations' do
