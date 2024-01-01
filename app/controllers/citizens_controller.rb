@@ -4,7 +4,8 @@ class CitizensController < ApplicationController
   before_action :set_citizen, only: %i[show edit update]
 
   def index
-    @citizens = Citizen.all.page params[:page]
+    @q = Citizen.ransack(params[:q])
+    @citizens = @q.result.page params[:page]
   end
 
   def create
