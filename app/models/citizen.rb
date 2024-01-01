@@ -12,7 +12,7 @@ class Citizen < ActiveRecord::Base
   validates :birthdate, birthdate: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  has_one :address
+  has_one :address, dependent: :destroy
 
   accepts_nested_attributes_for :address
 end
