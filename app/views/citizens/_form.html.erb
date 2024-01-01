@@ -57,9 +57,9 @@
     <div class="col-7">
       <%= f.label :status, 'Status' %><br/>
       <div class="form-check-inline">
-        <%= f.radio_button :status, 'Ativo', class: 'form-check-input' %>
+        <%= f.radio_button :status, :active, class: 'form-check-input' %>
         <%= f.label :status, 'Ativo', value: 0, class: 'form-check-label' %>
-        <%= f.radio_button :status, 'Inativo', class: 'form-check-input ml-2' %>
+        <%= f.radio_button :status, :inactive, class: 'form-check-input ml-2' %>
         <%= f.label :status, 'Inativo', value: 1, class: 'form-check-label' %>
       </div>
     </div>
@@ -115,7 +115,7 @@
     <div class="form-group form-row justify-content-center">
       <div class="col-7">
         <%= address_form.label :uf, 'UF' %>
-        <%= address_form.select :uf, options_for_select(Address.ufs, selected: @citizen.address.uf),
+        <%= address_form.select :uf, options_for_select(Address.ufs.keys.to_a, selected: @citizen.address.uf),
         { include_blank: 'Selecione...' }, class: 'form-control'  %>
       </div>
     </div>

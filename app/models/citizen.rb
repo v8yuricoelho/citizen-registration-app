@@ -15,4 +15,13 @@ class Citizen < ActiveRecord::Base
   has_one :address, dependent: :destroy
 
   accepts_nested_attributes_for :address
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[birthdate cns cpf created_at email full_name id phone status
+       updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[address picture_attachment picture_blob]
+  end
 end
