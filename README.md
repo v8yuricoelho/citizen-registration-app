@@ -1,24 +1,20 @@
-# README
+# Sistema de Cadastro de Munícipes
+<p align="center">Sistema de cadastro de munícipes</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<!--ts-->
+  * Ferramentas
+      * **Ruby 3.2.2**.
+      * **Rails 7**
+      * **PostgreSQL**
+      * **Docker**
+      * **Amazon S3**
+      * **Amazon SES**
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * Instruções
+      * Primeiramente, clone o projeto com `https://github.com/v8yuricoelho/citizen-registration-app`;
+      * Rode `docker-compose build` e depois `docker-compose up`
+      * Acesse **http://localhost:3000**
+  
+  * Tests
+    * Rode os testes com `rspec`.
+<!--te-->
