@@ -1,6 +1,4 @@
 # Sistema de Cadastro de Munícipes
-<p align="center">Sistema de cadastro de munícipes</p>
-
 <!--ts-->
   * Ferramentas
       * **Ruby 3.2.2**.
