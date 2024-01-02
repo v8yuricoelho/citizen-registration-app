@@ -25,7 +25,7 @@ class CitizensController < ApplicationController
       CitizenMailer.registration_notification(@citizen.full_name, @citizen.email).deliver_later
       redirect_to @citizen
     else
-      redirect_to new_citizen_path(@citizen)
+      redirect_to edit_citizen_path(@citizen)
     end
   end
 

@@ -66,6 +66,8 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 6.1.0'
 
+  gem 'rails-controller-testing'
+
   gem 'rubocop', '~> 1.59', require: false
 
   gem 'factory_bot_rails'
