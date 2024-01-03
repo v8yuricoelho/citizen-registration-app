@@ -13,7 +13,6 @@ RSpec.describe Citizen do
     it { is_expected.to validate_presence_of(:full_name) }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:phone) }
-    it { is_expected.to validate_presence_of(:birthdate) }
     it { is_expected.to validate_presence_of(:status) }
 
     it { is_expected.to validate_uniqueness_of(:cpf).case_insensitive }

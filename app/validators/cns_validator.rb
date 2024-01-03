@@ -2,7 +2,6 @@
 
 class CnsValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    return if value.blank?
     return if valid_cns?(value)
 
     record.errors.add attribute, (options[:message] || 'is not valid')
@@ -15,6 +14,8 @@ class CnsValidator < ActiveModel::EachValidator
   end
 
   def valid_cns?(cns)
+    return false if cns.blank?
+
     remove_special_characters(cns)
     return false if cns.size != 15
 

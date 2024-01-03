@@ -17,7 +17,6 @@ class CpfValidator < ActiveModel::EachValidator
   ].freeze
 
   def validate_each(record, attribute, value)
-    return if value.blank?
     return if valid_cpf?(value)
 
     record.errors.add attribute, (options[:message] || 'is not valid')
@@ -30,6 +29,8 @@ class CpfValidator < ActiveModel::EachValidator
   end
 
   def valid_cpf?(cpf)
+    return false if cpf.blank?
+
     remove_special_characters(cpf)
     return false if cpf.size != 11
     return false if DENY_LIST.include?(cpf)

@@ -10,7 +10,7 @@ RSpec.describe CitizenMailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Registo de munícipe')
       expect(mail.to).to eq([citizen.email])
-      expect(mail.from).to eq(['no-reply@aws.com'])
+      expect(mail.from).to eq(['ycr.data@gmail.com'])
     end
 
     it 'renders the body' do

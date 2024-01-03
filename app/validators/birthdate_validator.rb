@@ -2,7 +2,6 @@
 
 class BirthdateValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    return if value.blank?
     return if valid_birthdate?(value)
 
     record.errors.add attribute, (options[:message] || 'is not valid')
@@ -11,6 +10,8 @@ class BirthdateValidator < ActiveModel::EachValidator
   private
 
   def valid_birthdate?(birthdate)
+    return false if birthdate.blank?
+
     age = Date.today.year - birthdate.year - (Date.today.month > birthdate.month || (Date.today.month == birthdate.month && Date.today.day >= birthdate.day) ? 0 : 1)
     age.between?(1, 110)
   end
