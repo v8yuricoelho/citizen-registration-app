@@ -9,8 +9,8 @@
       * **Amazon SES**
 
   * Instruções
-      * Primeiramente, clone o projeto com `https://github.com/v8yuricoelho/citizen-registration-app`;
-      * Rode `docker-compose build` e depois `docker-compose up`
+      * Primeiramente, clone o projeto com `git clone https://github.com/v8yuricoelho/citizen-registration-app`;
+      * Acesse o diretório, rode `docker-compose build` e depois `docker-compose up`
       * Acesse **http://localhost:3000**
   
   * Tests
