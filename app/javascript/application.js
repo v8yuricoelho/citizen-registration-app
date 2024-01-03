@@ -6,3 +6,4 @@ import "bootstrap"
 /* app/assets/javascripts/application.js */
 
 
+import * as bootstrap from "bootstrap"
